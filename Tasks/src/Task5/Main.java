@@ -12,14 +12,10 @@ public class Main {
         return result;
     }
     public static boolean isPalindrome(String word){
-        String check = "";
-        for(int i = word.length() - 1; i >= 0;i--){
-            check += word.charAt(i);
-        }
-        return check.equalsIgnoreCase(word);
+        return new StringBuilder(word).reverse().toString().equalsIgnoreCase(word);
     }
-    public static String getCensoredText(String text){
-        return text.replaceAll("бяка", "[вырезано цензурой]");
+    public static String getCensoredText(String text, String censureWord){
+        return text.replaceAll(censureWord, "[вырезано цензурой]");
     }
 
 
@@ -28,13 +24,10 @@ public class Main {
     }
 
     public static String getInvertedText(String text){
-        String result = "";
         String[] words = text.split(" ");
+        String result = "";
         for (String word : words) {
-            for (int b = word.length() - 1; b >= 0; b--) {
-                result += word.charAt(b);
-            }
-            result += " ";
+            result += new StringBuilder(word).reverse().toString();
         }
         return result;
     }

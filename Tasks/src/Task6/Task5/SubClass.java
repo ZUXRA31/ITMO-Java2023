@@ -7,7 +7,8 @@ public class SubClass extends MainClass {
         this.name = name;
     }
     @Override
-    public String getName(){
-        return name;
+    public void get(){
+        name = scanner.next();
+        System.out.println(name);
     }
 }

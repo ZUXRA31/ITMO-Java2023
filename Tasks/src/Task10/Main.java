@@ -21,19 +21,6 @@ public class Main {
         }
     }
 
-    public static List<String> readTextStringFromFile(String filename) {
-        try (FileReader reader = new FileReader(filename)) {
-            String res = "";
-            int c;
-            while ((c = reader.read()) > 0) {
-                res += (char) c;
-            }
-            return new ArrayList<>(List.of(res.split(" ")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 
     public static void fileWriter(String filename, String text) {
         try (FileWriter writer = new FileWriter(filename)) {
@@ -50,7 +37,6 @@ public class Main {
             while ((c = reader.read()) > 0) {
                 res += (char) c;
             }
-            reader.close();
             FileWriter writer = new FileWriter(filename2, true);
             writer.write(res);
             writer.flush();
@@ -68,7 +54,6 @@ public class Main {
                 res += (char) c;
             }
             res = res.replaceAll("[^0-9A-Za-zА-Яа-я]", "\\$");
-            reader.close();
             FileWriter writer = new FileWriter(filename);
             writer.write(res);
             writer.flush();

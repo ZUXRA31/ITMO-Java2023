@@ -5,6 +5,5 @@ public class Main {
 
     public static void main(String[] args) {
         MainClass subClass = new SubClass(15, "Bob");
-        System.out.println(subClass.getName());
     }
 }

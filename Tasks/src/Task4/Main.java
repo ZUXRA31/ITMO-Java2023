@@ -1,4 +1,5 @@
 package Task4;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,50 +23,25 @@ public class Main {
         }
     }
 
-    public static void sumAndCheck() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите первое число: ");
-        int a = scanner.nextInt();
-        System.out.print("Введите второе число: ");
-        int b = scanner.nextInt();
-        System.out.print("Введите третье число: ");
-        int c = scanner.nextInt();
-
-        System.out.println("Результат: " + ((a + b) == c));
-
-        scanner.close();
+    public static boolean sumAndCheck(int a, int b, int c) {
+        return (a + b) == c;
     }
 
-    public static void checkOneBiggerThanTwo() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите первое число: ");
-        int a = scanner.nextInt();
-        System.out.print("Введите второе число: ");
-        int b = scanner.nextInt();
-        System.out.print("Введите третье число: ");
-        int c = scanner.nextInt();
-
-        System.out.println("Результат: " + (b > a && c > b));
-
-        scanner.close();
+    public static boolean checkOneBiggerThanTwo(int a, int b, int c) {
+        return b > a && c > b;
     }
 
-    public static void checkThreeInMass(int[] mass) {
-        System.out.println(mass[0] == 3 || mass[mass.length - 1] == 3);
+    public static boolean checkThreeInMass(int[] mass) {
+        return mass[0] == 3 || mass[mass.length - 1] == 3;
     }
 
-    public static void containsOneOrThree(int[] mass) {
-        System.out.println("array: ");
-        for (int num: mass) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
+    public static boolean containsOneOrThree(int[] mass) {
         for (int num : mass) {
             if (num == 3 || num == 1) {
-                System.out.println(true);
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     public static void isSorted(int[] mass) {
@@ -101,34 +77,17 @@ public class Main {
             }
         }
         System.out.println("]");
-        scanner.close();
     }
 
-    public static void swapMassAndShow(int[] array1, int[] array2) {
-        System.out.println("Result: [");
-        for (int i = 0; i < array1.length; i++) {
-            int temp = array1[i];
-            array1[i] = array2[i];
-            array2[i] = temp;
-        }
-        System.out.println("]");
-
-        System.out.print("Array 1: [");
-        for (int i = 0; i < array1.length; i++) {
-            System.out.print(array1[i]);
-            if (i < array1.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-        System.out.print("Array 2: [");
-        for (int i = 0; i < array1.length; i++) {
-            System.out.print(array1[i]);
-            if (i < array1.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
+    public static int[] swapMassAndShow(int[] array1) {
+        System.out.println("Array 1:" );
+        System.out.println(Arrays.toString(array1));
+        int num = array1[0];
+        array1[0] = array1[array1.length-1];
+        array1[array1.length-1] = num;
+        System.out.println("Array 2:" );
+        System.out.println(Arrays.toString(array1));
+        return array1;
     }
 
     public static void findUnique(int[] array) {
@@ -215,14 +174,27 @@ public class Main {
         System.out.println("Задание 1.2: ");
         showDividedThreeAndFive();
         System.out.println("Задание 1.3: ");
-        sumAndCheck();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите первое число: ");
+        int a = scanner.nextInt();
+        System.out.print("Введите второе число: ");
+        int b = scanner.nextInt();
+        System.out.print("Введите третье число: ");
+        int c = scanner.nextInt();
+        System.out.println(sumAndCheck(a, b, c));
         System.out.println("Задание 1.4: ");
-        checkOneBiggerThanTwo();
+        System.out.print("Введите первое число: ");
+        a = scanner.nextInt();
+        System.out.print("Введите второе число: ");
+        b = scanner.nextInt();
+        System.out.print("Введите третье число: ");
+        c = scanner.nextInt();
+        System.out.println(checkOneBiggerThanTwo(a, b, c));
         System.out.println("Задание 1.5: ");
         int[] mass = {1, 2, 4, 2, 3};
         checkThreeInMass(mass);
         System.out.println("Задание 1.6: ");
-        containsOneOrThree(mass);
+        System.out.println(containsOneOrThree(mass));
         System.out.println("Задание 2.1: ");
         int[] mass2 = {1, 2, 5, 7, 12};
         isSorted(mass2);
@@ -231,8 +203,7 @@ public class Main {
         writeArrayAndShow();
         System.out.println("Задание 2.3: ");
         int[] array1 = {1, 2, 5, 7, 12};
-        int[] array2 = {8, 1, 5, 9, 24};
-        swapMassAndShow(array1, array2);
+        swapMassAndShow(array1);
         System.out.println("Задание 2.4: ");
         findUnique(array1);
         System.out.println("Задание 2.5: ");
